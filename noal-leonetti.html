@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noal Leonetti — Urban Planner</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sand:      #f5ede0;
+      --sand-dark: #ecdbc6;
+      --terra:     #c17a4a;
+      --terra-dk:  #9a5e35;
+      --brown:     #2c1810;
+      --brown-mid: #7a5c4a;
+      --sage:      #6b8f5e;
+      --sage-lt:   #d4e5cd;
+      --white:     #fffaf5;
+      --border:    rgba(44,24,16,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--sand);
+      color: var(--brown);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── CURSOR ACCENT ── */
+    ::selection { background: #c17a4a30; }
+
+    /* ────────────────────────────────
+       NAV
+    ──────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(245, 237, 224, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: var(--brown);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--brown-mid);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--terra); }
+
+    .nav-cta {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--brown);
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--terra-dk); transform: translateY(-1px); }
+
+    /* ────────────────────────────────
+       HERO
+    ──────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 6rem 3rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 4rem;
+      position: relative;
+    }
+
+    /* Organic blobs */
+    .blob {
+      position: fixed;
+      border-radius: 62% 38% 55% 45% / 45% 55% 65% 35%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .blob-1 {
+      width: 520px; height: 520px;
+      top: -120px; right: -100px;
+      background: var(--terra);
+      opacity: 0.12;
+      animation: morph1 18s ease-in-out infinite;
+    }
+
+    .blob-2 {
+      width: 380px; height: 380px;
+      bottom: 10%; left: -80px;
+      background: var(--sage);
+      opacity: 0.1;
+      animation: morph2 22s ease-in-out infinite;
+    }
+
+    @keyframes morph1 {
+      0%, 100% { border-radius: 62% 38% 55% 45% / 45% 55% 65% 35%; }
+      33%       { border-radius: 40% 60% 70% 30% / 50% 40% 60% 50%; }
+      66%       { border-radius: 55% 45% 35% 65% / 65% 35% 55% 45%; }
+    }
+    @keyframes morph2 {
+      0%, 100% { border-radius: 45% 55% 40% 60% / 55% 45% 60% 40%; }
+      33%       { border-radius: 60% 40% 55% 45% / 40% 60% 45% 55%; }
+      66%       { border-radius: 35% 65% 60% 40% / 60% 40% 35% 65%; }
+    }
+
+    .hero-left { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(193, 122, 74, 0.12);
+      border: 1px solid rgba(193, 122, 74, 0.3);
+      color: var(--terra-dk);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.375rem 0.875rem;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--terra);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--brown);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--terra);
+    }
+
+    .hero-desc {
+      font-size: 1.0625rem;
+      color: var(--brown-mid);
+      max-width: 420px;
+      line-height: 1.75;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      color: var(--brown-mid);
+      margin-bottom: 2.25rem;
+      opacity: 0.7;
+    }
+
+    .hero-meta svg { flex-shrink: 0; }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.75rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-dark {
+      background: var(--brown);
+      color: var(--white);
+    }
+    .btn-dark:hover {
+      background: var(--terra-dk);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(44,24,16,0.2);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--brown);
+      border: 1.5px solid rgba(44,24,16,0.25);
+    }
+    .btn-outline:hover {
+      border-color: var(--terra);
+      color: var(--terra-dk);
+      transform: translateY(-2px);
+    }
+
+    /* Hero right — visual card */
+    .hero-right {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .hero-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      box-shadow: 0 4px 24px rgba(44,24,16,0.06);
+    }
+
+    .avatar-row {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #dfc4a8 0%, #c9956c 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      color: var(--white);
+      flex-shrink: 0;
+      border: 3px solid var(--white);
+      box-shadow: 0 4px 12px rgba(193,122,74,0.3);
+    }
+
+    .avatar-info h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--brown);
+      margin-bottom: 0.1rem;
+    }
+
+    .avatar-info p {
+      font-size: 0.8rem;
+      color: var(--brown-mid);
+    }
+
+    .card-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 0 1.25rem;
+    }
+
+    .card-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.875rem;
+    }
+
+    .card-detail:last-child { margin-bottom: 0; }
+
+    .card-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      background: rgba(193,122,74,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+    }
+
+    .card-detail-label { font-size: 0.7rem; color: var(--brown-mid); font-weight: 500; margin-bottom: 0.1rem; }
+    .card-detail-value { font-size: 0.85rem; font-weight: 600; color: var(--brown); }
+
+    /* Mini stat pills */
+    .hero-pills {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .pill {
+      flex: 1;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(44,24,16,0.04);
+    }
+
+    .pill-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.75rem;
+      color: var(--terra);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+
+    .pill-label { font-size: 0.7rem; color: var(--brown-mid); font-weight: 500; line-height: 1.3; }
+
+    /* ────────────────────────────────
+       SECTION SHARED
+    ──────────────────────────────── */
+    .section-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 3rem;
+      position: relative;
+    }
+
+    .section-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .eyebrow-line {
+      width: 32px; height: 2px;
+      background: var(--terra);
+      border-radius: 999px;
+    }
+
+    .eyebrow-text {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terra);
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--brown);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+    }
+
+    .section-title em { font-style: italic; color: var(--terra); }
+
+    /* ────────────────────────────────
+       ABOUT
+    ──────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-text {
+      font-size: 1.0625rem;
+      color: #5a3e30;
+      line-height: 1.85;
+    }
+
+    .about-text p + p { margin-top: 1.25rem; }
+
+    .about-text strong { color: var(--brown); font-weight: 600; }
+
+    .about-aside { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .aside-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 2px 16px rgba(44,24,16,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .aside-card:hover {
+      transform: translateX(4px);
+      box-shadow: 0 4px 20px rgba(44,24,16,0.08);
+    }
+
+    .aside-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(193,122,74,0.15), rgba(193,122,74,0.05));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .aside-card-label { font-size: 0.7rem; color: var(--brown-mid); font-weight: 500; margin-bottom: 0.15rem; }
+    .aside-card-value { font-size: 0.9rem; font-weight: 600; color: var(--brown); }
+
+    /* ────────────────────────────────
+       STRIPE DIVIDER
+    ──────────────────────────────── */
+    .stripe {
+      background: var(--brown);
+      padding: 1.25rem 3rem;
+      overflow: hidden;
+    }
+
+    .stripe-inner {
+      display: flex;
+      gap: 3rem;
+      animation: scroll-left 25s linear infinite;
+      white-space: nowrap;
+      width: max-content;
+    }
+
+    .stripe-item {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--sand);
+      opacity: 0.5;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .stripe-dot {
+      width: 5px; height: 5px;
+      background: var(--terra);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    @keyframes scroll-left {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ────────────────────────────────
+       FOCUS / EXPERTISE
+    ──────────────────────────────── */
+    .focus-bg { background: var(--white); }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .focus-card {
+      background: var(--sand);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem 1.75rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .focus-card::before {
+      content: '';
+      position: absolute;
+      bottom: -40px; right: -40px;
+      width: 120px; height: 120px;
+      background: var(--terra);
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .focus-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(44,24,16,0.1); }
+    .focus-card:hover::before { opacity: 0.06; }
+
+    .focus-emoji {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+
+    .focus-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--brown);
+      margin-bottom: 0.625rem;
+    }
+
+    .focus-card p {
+      font-size: 0.875rem;
+      color: var(--brown-mid);
+      line-height: 1.7;
+    }
+
+    /* ────────────────────────────────
+       EDUCATION
+    ──────────────────────────────── */
+    .edu-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      box-shadow: 0 4px 24px rgba(44,24,16,0.06);
+    }
+
+    .edu-logo {
+      width: 72px; height: 72px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #dfc4a8, #c9956c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .edu-degree {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.375rem;
+      color: var(--brown);
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-school {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--terra);
+      margin-bottom: 0.25rem;
+    }
+
+    .edu-detail {
+      font-size: 0.8125rem;
+      color: var(--brown-mid);
+    }
+
+    .edu-tag {
+      background: rgba(107,143,94,0.12);
+      border: 1px solid rgba(107,143,94,0.3);
+      color: #4a6b3e;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    /* ────────────────────────────────
+       CONTACT
+    ──────────────────────────────── */
+    .contact-bg { background: var(--brown); overflow: hidden; position: relative; }
+
+    .contact-blob {
+      position: absolute;
+      border-radius: 62% 38% 55% 45% / 45% 55% 65% 35%;
+      pointer-events: none;
+    }
+
+    .contact-blob-1 {
+      width: 400px; height: 400px;
+      top: -100px; right: -80px;
+      background: var(--terra);
+      opacity: 0.15;
+    }
+
+    .contact-blob-2 {
+      width: 300px; height: 300px;
+      bottom: -80px; left: 10%;
+      background: var(--sage);
+      opacity: 0.08;
+    }
+
+    .contact-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      padding: 7rem 3rem;
+    }
+
+    .contact-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--terra);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-inner h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--sand);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-inner h2 em { font-style: italic; color: var(--terra); }
+
+    .contact-inner p {
+      font-size: 1.0625rem;
+      color: rgba(245,237,224,0.55);
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+
+    .contact-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .btn-sand {
+      background: var(--sand);
+      color: var(--brown);
+    }
+    .btn-sand:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    .btn-ghost-light {
+      border: 1.5px solid rgba(245,237,224,0.25);
+      color: rgba(245,237,224,0.7);
+    }
+    .btn-ghost-light:hover {
+      border-color: var(--terra);
+      color: var(--terra);
+      transform: translateY(-2px);
+    }
+
+    /* ────────────────────────────────
+       FOOTER
+    ──────────────────────────────── */
+    footer {
+      background: #1a0d08;
+      padding: 1.75rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1rem;
+      color: rgba(245,237,224,0.4);
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(245,237,224,0.25);
+    }
+
+    .footer-link {
+      font-size: 0.75rem;
+      color: var(--terra);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .footer-link:hover { opacity: 1; }
+
+    /* ────────────────────────────────
+       RESPONSIVE
+    ──────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 5rem 1.5rem 3rem; text-align: center; }
+      .hero-badge { display: inline-flex; }
+      .hero-meta { justify-content: center; }
+      .hero-actions { justify-content: center; }
+      .hero-right { display: none; }
+      .section-wrap { padding: 4rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .focus-grid { grid-template-columns: 1fr; }
+      .edu-card { grid-template-columns: auto 1fr; }
+      .edu-tag { display: none; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Ambient blobs -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="#">Noal Leonetti</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#focus">Expertise</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's talk</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-badge">🌿 Urban Planning · Seattle, WA</div>
+    <h1>Building<br />better<br /><em>cities.</em></h1>
+    <p class="hero-desc">Master of Urban Planning student at the University of Washington, passionate about sustainable, equitable, and human-centered design.</p>
+    <p class="hero-meta">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Seattle, Washington, United States
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-dark">
+        Get in touch
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/noal-leonetti-7b858619a/" target="_blank" class="btn btn-outline">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <!-- Profile card -->
+    <div class="hero-card">
+      <div class="avatar-row">
+        <div class="avatar">NL</div>
+        <div class="avatar-info">
+          <h3>Noal Leonetti</h3>
+          <p>He / Him · MUP Student</p>
+        </div>
+      </div>
+      <div class="card-divider"></div>
+      <div class="card-detail">
+        <div class="card-icon">🎓</div>
+        <div>
+          <div class="card-detail-label">Degree</div>
+          <div class="card-detail-value">Master of Urban Planning</div>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="card-icon">🏫</div>
+        <div>
+          <div class="card-detail-label">University</div>
+          <div class="card-detail-value">University of Washington</div>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="card-icon">📍</div>
+        <div>
+          <div class="card-detail-label">Location</div>
+          <div class="card-detail-value">Seattle, Washington</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stat pills -->
+    <div class="hero-pills">
+      <div class="pill">
+        <div class="pill-num">272</div>
+        <div class="pill-label">LinkedIn connections</div>
+      </div>
+      <div class="pill">
+        <div class="pill-num">6</div>
+        <div class="pill-label">Focus areas</div>
+      </div>
+      <div class="pill">
+        <div class="pill-num">UW</div>
+        <div class="pill-label">College of Built Environments</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TICKER ── -->
+<div class="stripe">
+  <div class="stripe-inner">
+    <span class="stripe-item"><span class="stripe-dot"></span>Urban Design</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Sustainability</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Community Equity</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Transportation</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>GIS & Spatial Analysis</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Housing Policy</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Climate Adaptation</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Urban Design</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Sustainability</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Community Equity</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Transportation</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>GIS & Spatial Analysis</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Housing Policy</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Climate Adaptation</span>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="section-eyebrow">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">About</span>
+    </div>
+    <h2 class="section-title">Shaping cities<br />for <em>people</em></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Noal Leonetti is a graduate student pursuing a <strong>Master of Urban Planning</strong> at the University of Washington's College of Built Environments in Seattle. He is driven by a deep belief that thoughtful, evidence-based planning can create cities that are more livable, resilient, and equitable for everyone.</p>
+        <p>With a commitment to <strong>sustainability and environmental stewardship</strong>, Noal approaches urban challenges by bridging the gap between policy, community needs, and the built environment — always with people at the center.</p>
+        <p>Whether through GIS mapping, community engagement, or policy research, he brings a collaborative, rigorous, and human-centered approach to every project he takes on.</p>
+      </div>
+      <div class="about-aside">
+        <div class="aside-card">
+          <div class="aside-icon">🎯</div>
+          <div>
+            <div class="aside-card-label">Current focus</div>
+            <div class="aside-card-value">Sustainable urban development</div>
+          </div>
+        </div>
+        <div class="aside-card">
+          <div class="aside-icon">🌍</div>
+          <div>
+            <div class="aside-card-label">Approach</div>
+            <div class="aside-card-value">Equity-centered & data-driven</div>
+          </div>
+        </div>
+        <div class="aside-card">
+          <div class="aside-icon">🤝</div>
+          <div>
+            <div class="aside-card-label">Open to</div>
+            <div class="aside-card-value">Internships & collaborations</div>
+          </div>
+        </div>
+        <div class="aside-card">
+          <div class="aside-icon">📚</div>
+          <div>
+            <div class="aside-card-label">Currently studying</div>
+            <div class="aside-card-value">Urban policy, GIS, housing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOCUS AREAS ── -->
+<div class="focus-bg" id="focus">
+  <div class="section-wrap">
+    <div class="section-eyebrow">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">Expertise</span>
+    </div>
+    <h2 class="section-title">Areas of <em>interest</em></h2>
+    <div class="focus-grid">
+      <div class="focus-card">
+        <span class="focus-emoji">🏙️</span>
+        <h3>Urban Design & Policy</h3>
+        <p>Studying how zoning, land use, and design guidelines shape livable, resilient cities for all residents.</p>
+      </div>
+      <div class="focus-card">
+        <span class="focus-emoji">🌿</span>
+        <h3>Sustainability & Environment</h3>
+        <p>Exploring green infrastructure, climate adaptation strategies, and environmentally conscious development practices.</p>
+      </div>
+      <div class="focus-card">
+        <span class="focus-emoji">🤝</span>
+        <h3>Community & Equity</h3>
+        <p>Advocating for inclusive planning processes that center underrepresented voices and address systemic inequities.</p>
+      </div>
+      <div class="focus-card">
+        <span class="focus-emoji">🚌</span>
+        <h3>Transportation & Mobility</h3>
+        <p>Researching transit systems, walkability, and multimodal infrastructure that make cities accessible to everyone.</p>
+      </div>
+      <div class="focus-card">
+        <span class="focus-emoji">🗺️</span>
+        <h3>Data & GIS Analysis</h3>
+        <p>Using spatial analysis and data visualization to inform evidence-based, impactful planning decisions.</p>
+      </div>
+      <div class="focus-card">
+        <span class="focus-emoji">🏘️</span>
+        <h3>Housing & Affordability</h3>
+        <p>Tackling the Pacific Northwest's most pressing challenges through creative, community-driven policy solutions.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── EDUCATION ── -->
+<section id="education">
+  <div class="section-wrap">
+    <div class="section-eyebrow">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">Education</span>
+    </div>
+    <h2 class="section-title">Academic <em>background</em></h2>
+    <!-- Graduate -->
+    <div class="edu-card" style="margin-bottom: 1.25rem;">
+      <div class="edu-logo">🎓</div>
+      <div>
+        <div class="edu-degree">Master of Urban Planning (MUP)</div>
+        <div class="edu-school">University of Washington — College of Built Environments</div>
+        <div class="edu-detail">Seattle, Washington · Currently enrolled</div>
+      </div>
+      <div class="edu-tag">Currently enrolled</div>
+    </div>
+
+    <!-- Undergraduate -->
+    <div class="edu-card">
+      <div class="edu-logo" style="background: linear-gradient(135deg, #c8ddd0, #8fb89e);">🏛️</div>
+      <div>
+        <div class="edu-degree">Bachelor of Arts — Environmental Studies & Government</div>
+        <div class="edu-school">Bowdoin College</div>
+        <div class="edu-detail">Brunswick, Maine · Minor in German</div>
+      </div>
+      <div class="edu-tag" style="background: rgba(107,143,94,0.12); border-color: rgba(107,143,94,0.3); color: #4a6b3e;">BA Completed</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<div class="contact-bg" id="contact">
+  <div class="contact-blob contact-blob-1"></div>
+  <div class="contact-blob contact-blob-2"></div>
+  <div class="contact-inner">
+    <div class="contact-eyebrow">
+      <span>✦</span> Let's connect <span>✦</span>
+    </div>
+    <h2>Have a project<br />in <em>mind?</em></h2>
+    <p>Whether you're interested in urban planning, want to collaborate on research, or simply want to talk about cities — Noal would love to hear from you.</p>
+    <div class="contact-actions">
+      <a href="https://www.linkedin.com/in/noal-leonetti-7b858619a/" target="_blank" class="btn btn-sand">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        Connect on LinkedIn
+      </a>
+      <a href="#about" class="btn btn-ghost-light">Learn more about Noal</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-logo">Noal Leonetti</span>
+  <span class="footer-copy">© 2026 · Seattle, WA</span>
+  <a class="footer-link" href="https://www.linkedin.com/in/noal-leonetti-7b858619a/" target="_blank">LinkedIn ↗</a>
+</footer>
+
+</body>
+</html>
