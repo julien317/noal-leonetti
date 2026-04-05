@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Noal Leonetti — Urban Planner &amp; Policy Advocate</title>
-  <meta name="description" content="Noal Leonetti is a Master of Urban Planning student at the University of Washington, focused on transportation equity, climate resilience, and sustainable cities." />
+  <meta name="description" content="Noal Leonetti is a Master of Urban Planning student at the University of Washington, with experience in transportation planning, climate policy, GIS, and international urban development." />
   <meta property="og:title" content="Noal Leonetti — Urban Planner &amp; Policy Advocate" />
-  <meta property="og:description" content="Master of Urban Planning student at UW specializing in transportation equity, climate resilience, and sustainable urban development." />
+  <meta property="og:description" content="MUP student at UW | CBYX Fellow | Transportation, Climate &amp; GIS | Seattle, WA" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://raw.githubusercontent.com/julien317/noal-leonetti/main/noal-photo-1.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -36,12 +36,9 @@
       overflow-x: hidden;
     }
 
-    /* ── CURSOR ACCENT ── */
     ::selection { background: #c17a4a30; }
 
-    /* ────────────────────────────────
-       NAV
-    ──────────────────────────────── */
+    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -67,7 +64,7 @@
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2rem;
       list-style: none;
     }
 
@@ -95,9 +92,7 @@
 
     .nav-cta:hover { background: var(--terra-dk); transform: translateY(-1px); }
 
-    /* ────────────────────────────────
-       HERO
-    ──────────────────────────────── */
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: grid;
@@ -110,7 +105,6 @@
       position: relative;
     }
 
-    /* Organic blobs */
     .blob {
       position: fixed;
       border-radius: 62% 38% 55% 45% / 45% 55% 65% 35%;
@@ -178,10 +172,7 @@
       margin-bottom: 1.25rem;
     }
 
-    .hero h1 em {
-      font-style: italic;
-      color: var(--terra);
-    }
+    .hero h1 em { font-style: italic; color: var(--terra); }
 
     .hero-desc {
       font-size: 1.0625rem;
@@ -243,7 +234,6 @@
       transform: translateY(-2px);
     }
 
-    /* Hero right — visual card */
     .hero-right {
       position: relative;
       z-index: 1;
@@ -329,7 +319,6 @@
     .card-detail-label { font-size: 0.7rem; color: var(--brown-mid); font-weight: 500; margin-bottom: 0.1rem; }
     .card-detail-value { font-size: 0.85rem; font-weight: 600; color: var(--brown); }
 
-    /* Mini stat pills */
     .hero-pills {
       display: flex;
       gap: 0.75rem;
@@ -355,9 +344,7 @@
 
     .pill-label { font-size: 0.7rem; color: var(--brown-mid); font-weight: 500; line-height: 1.3; }
 
-    /* ────────────────────────────────
-       SECTION SHARED
-    ──────────────────────────────── */
+    /* ── SECTION SHARED ── */
     .section-wrap {
       max-width: 1200px;
       margin: 0 auto;
@@ -397,14 +384,12 @@
 
     .section-title em { font-style: italic; color: var(--terra); }
 
-    /* ────────────────────────────────
-       ABOUT
-    ──────────────────────────────── */
+    /* ── ABOUT ── */
     .about-grid {
       display: grid;
       grid-template-columns: 1.2fr 1fr;
       gap: 5rem;
-      align-items: center;
+      align-items: start;
     }
 
     .about-text {
@@ -417,13 +402,13 @@
 
     .about-text strong { color: var(--brown); font-weight: 600; }
 
-    .about-aside { display: flex; flex-direction: column; gap: 1.25rem; }
+    .about-aside { display: flex; flex-direction: column; gap: 1rem; }
 
     .aside-card {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 1.5rem;
+      padding: 1.25rem 1.5rem;
       display: flex;
       align-items: center;
       gap: 1rem;
@@ -437,22 +422,51 @@
     }
 
     .aside-icon {
-      width: 44px; height: 44px;
-      border-radius: 12px;
+      width: 40px; height: 40px;
+      border-radius: 10px;
       background: linear-gradient(135deg, rgba(193,122,74,0.15), rgba(193,122,74,0.05));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       flex-shrink: 0;
     }
 
-    .aside-card-label { font-size: 0.7rem; color: var(--brown-mid); font-weight: 500; margin-bottom: 0.15rem; }
-    .aside-card-value { font-size: 0.9rem; font-weight: 600; color: var(--brown); }
+    .aside-card-label { font-size: 0.7rem; color: var(--brown-mid); font-weight: 500; margin-bottom: 0.1rem; }
+    .aside-card-value { font-size: 0.875rem; font-weight: 600; color: var(--brown); }
 
-    /* ────────────────────────────────
-       STRIPE DIVIDER
-    ──────────────────────────────── */
+    /* Skills tags */
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+
+    .skill-tag {
+      background: var(--white);
+      border: 1px solid var(--border);
+      color: var(--brown-mid);
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: rgba(193,122,74,0.1);
+      border-color: rgba(193,122,74,0.3);
+      color: var(--terra-dk);
+    }
+
+    .skill-tag.highlight {
+      background: rgba(107,143,94,0.1);
+      border-color: rgba(107,143,94,0.3);
+      color: var(--sage);
+    }
+
+    /* ── STRIPE DIVIDER ── */
     .stripe {
       background: var(--brown);
       padding: 1.25rem 3rem;
@@ -489,22 +503,195 @@
       to   { transform: translateX(-50%); }
     }
 
-    /* ────────────────────────────────
-       FOCUS / EXPERTISE
-    ──────────────────────────────── */
+    /* ── EXPERIENCE ── */
+    .exp-timeline {
+      position: relative;
+    }
+
+    .exp-timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .exp-item:last-child { margin-bottom: 0; }
+
+    .exp-dot {
+      width: 42px; height: 42px;
+      border-radius: 12px;
+      background: var(--white);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 2px 8px rgba(44,24,16,0.06);
+      transition: all 0.2s;
+    }
+
+    .exp-item:hover .exp-dot {
+      border-color: var(--terra);
+      background: rgba(193,122,74,0.08);
+    }
+
+    .exp-dot.active {
+      border-color: var(--sage);
+      background: rgba(107,143,94,0.1);
+    }
+
+    .exp-body {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.5rem 1.75rem;
+      box-shadow: 0 2px 16px rgba(44,24,16,0.04);
+      transition: box-shadow 0.2s;
+    }
+
+    .exp-item:hover .exp-body {
+      box-shadow: 0 6px 24px rgba(44,24,16,0.08);
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-role {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.125rem;
+      color: var(--brown);
+      line-height: 1.2;
+    }
+
+    .exp-date {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--terra);
+      background: rgba(193,122,74,0.1);
+      border: 1px solid rgba(193,122,74,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .exp-date.current {
+      background: rgba(107,143,94,0.1);
+      border-color: rgba(107,143,94,0.3);
+      color: var(--sage);
+    }
+
+    .exp-org {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--terra-dk);
+      margin-bottom: 0.75rem;
+    }
+
+    .exp-desc {
+      font-size: 0.875rem;
+      color: var(--brown-mid);
+      line-height: 1.7;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .exp-tag {
+      font-size: 0.7rem;
+      font-weight: 500;
+      background: var(--sand);
+      border: 1px solid var(--border);
+      color: var(--brown-mid);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+
+    /* CBYX spotlight */
+    .cbyx-card {
+      background: linear-gradient(135deg, #2c1810 0%, #4a2a1a 100%);
+      border-radius: 20px;
+      padding: 2rem 2.25rem;
+      margin-top: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cbyx-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: var(--terra);
+      border-radius: 50%;
+      opacity: 0.15;
+    }
+
+    .cbyx-flag {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .cbyx-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 0.25rem;
+    }
+
+    .cbyx-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .cbyx-body {
+      font-size: 0.8125rem;
+      color: rgba(245,237,224,0.6);
+      line-height: 1.65;
+    }
+
+    /* ── FOCUS / EXPERTISE ── */
     .focus-bg { background: var(--white); }
 
     .focus-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
 
     .focus-card {
       background: var(--sand);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2rem 1.75rem;
+      border-radius: 18px;
+      padding: 1.75rem 1.5rem;
       transition: all 0.3s;
       position: relative;
       overflow: hidden;
@@ -525,66 +712,64 @@
     .focus-card:hover::before { opacity: 0.06; }
 
     .focus-emoji {
-      font-size: 2rem;
+      font-size: 1.75rem;
       display: block;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
     }
 
     .focus-card h3 {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: var(--brown);
-      margin-bottom: 0.625rem;
+      margin-bottom: 0.5rem;
     }
 
     .focus-card p {
-      font-size: 0.875rem;
+      font-size: 0.8375rem;
       color: var(--brown-mid);
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
-    /* ────────────────────────────────
-       EDUCATION
-    ──────────────────────────────── */
+    /* ── EDUCATION ── */
     .edu-card {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 24px;
-      padding: 2.5rem;
+      padding: 2.25rem;
       display: grid;
       grid-template-columns: auto 1fr auto;
-      gap: 2rem;
+      gap: 1.75rem;
       align-items: center;
       box-shadow: 0 4px 24px rgba(44,24,16,0.06);
     }
 
     .edu-logo {
-      width: 72px; height: 72px;
-      border-radius: 18px;
+      width: 64px; height: 64px;
+      border-radius: 16px;
       background: linear-gradient(135deg, #dfc4a8, #c9956c);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 1.75rem;
       flex-shrink: 0;
     }
 
     .edu-degree {
       font-family: 'DM Serif Display', serif;
-      font-size: 1.375rem;
+      font-size: 1.25rem;
       color: var(--brown);
-      margin-bottom: 0.3rem;
-    }
-
-    .edu-school {
-      font-size: 0.9375rem;
-      font-weight: 600;
-      color: var(--terra);
       margin-bottom: 0.25rem;
     }
 
+    .edu-school {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--terra);
+      margin-bottom: 0.2rem;
+    }
+
     .edu-detail {
-      font-size: 0.8125rem;
+      font-size: 0.8rem;
       color: var(--brown-mid);
     }
 
@@ -592,16 +777,14 @@
       background: rgba(107,143,94,0.12);
       border: 1px solid rgba(107,143,94,0.3);
       color: #4a6b3e;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
-      padding: 0.4rem 1rem;
+      padding: 0.35rem 0.9rem;
       border-radius: 999px;
       white-space: nowrap;
     }
 
-    /* ────────────────────────────────
-       CONTACT
-    ──────────────────────────────── */
+    /* ── CONTACT ── */
     .contact-bg { background: var(--brown); overflow: hidden; position: relative; }
 
     .contact-blob {
@@ -685,9 +868,7 @@
       transform: translateY(-2px);
     }
 
-    /* ────────────────────────────────
-       FOOTER
-    ──────────────────────────────── */
+    /* ── FOOTER ── */
     footer {
       background: #1a0d08;
       padding: 1.75rem 3rem;
@@ -716,9 +897,7 @@
     }
     .footer-link:hover { opacity: 1; }
 
-    /* ────────────────────────────────
-       RESPONSIVE
-    ──────────────────────────────── */
+    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 0 1.5rem; }
       .nav-links { display: none; }
@@ -732,6 +911,9 @@
       .focus-grid { grid-template-columns: 1fr; }
       .edu-card { grid-template-columns: auto 1fr; }
       .edu-tag { display: none; }
+      .exp-timeline::before { display: none; }
+      .exp-item { grid-template-columns: 1fr; }
+      .exp-dot { display: none; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
@@ -747,6 +929,7 @@
   <a class="nav-logo" href="#">Noal Leonetti</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#focus">Expertise</a></li>
     <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -759,10 +942,10 @@
   <div class="hero-left">
     <div class="hero-badge">🌿 Urban Planning · Seattle, WA</div>
     <h1>Building<br />better<br /><em>cities.</em></h1>
-    <p class="hero-desc">Master of Urban Planning student at the University of Washington, passionate about sustainable, equitable, and human-centered cities.</p>
+    <p class="hero-desc">Master of Urban Planning student at the University of Washington, with hands-on experience in transportation policy, climate resilience, GIS mapping, and international urban development.</p>
     <p class="hero-meta">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Seattle, Washington, United States
+      Seattle, Washington · Open to opportunities
     </p>
     <div class="hero-actions">
       <a href="#contact" class="btn btn-dark">
@@ -790,8 +973,8 @@
       <div class="card-detail">
         <div class="card-icon">🎓</div>
         <div>
-          <div class="card-detail-label">Degree</div>
-          <div class="card-detail-value">Master of Urban Planning</div>
+          <div class="card-detail-label">Recent role</div>
+          <div class="card-detail-value">Public Policy Intern, MRSC (2025)</div>
         </div>
       </div>
       <div class="card-detail">
@@ -799,6 +982,13 @@
         <div>
           <div class="card-detail-label">University</div>
           <div class="card-detail-value">University of Washington</div>
+        </div>
+      </div>
+      <div class="card-detail">
+        <div class="card-icon">🗣️</div>
+        <div>
+          <div class="card-detail-label">Languages</div>
+          <div class="card-detail-value">English · German</div>
         </div>
       </div>
       <div class="card-detail">
@@ -813,16 +1003,16 @@
     <!-- Stat pills -->
     <div class="hero-pills">
       <div class="pill">
-        <div class="pill-num">272</div>
-        <div class="pill-label">LinkedIn connections</div>
+        <div class="pill-num">5</div>
+        <div class="pill-label">Planning roles</div>
       </div>
       <div class="pill">
-        <div class="pill-num">6</div>
-        <div class="pill-label">Focus areas</div>
+        <div class="pill-num">2</div>
+        <div class="pill-label">Countries worked in</div>
       </div>
       <div class="pill">
-        <div class="pill-num">UW</div>
-        <div class="pill-label">College of Built Environments</div>
+        <div class="pill-num">CBYX</div>
+        <div class="pill-label">US–Germany Fellow</div>
       </div>
     </div>
   </div>
@@ -831,20 +1021,22 @@
 <!-- ── TICKER ── -->
 <div class="stripe">
   <div class="stripe-inner">
-    <span class="stripe-item"><span class="stripe-dot"></span>Urban Design</span>
-    <span class="stripe-item"><span class="stripe-dot"></span>Sustainability</span>
-    <span class="stripe-item"><span class="stripe-dot"></span>Community Equity</span>
-    <span class="stripe-item"><span class="stripe-dot"></span>Transportation</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Transportation Planning</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Climate Policy</span>
     <span class="stripe-item"><span class="stripe-dot"></span>GIS & Spatial Analysis</span>
-    <span class="stripe-item"><span class="stripe-dot"></span>Housing Policy</span>
-    <span class="stripe-item"><span class="stripe-dot"></span>Climate Adaptation</span>
-    <span class="stripe-item"><span class="stripe-dot"></span>Urban Design</span>
-    <span class="stripe-item"><span class="stripe-dot"></span>Sustainability</span>
     <span class="stripe-item"><span class="stripe-dot"></span>Community Equity</span>
-    <span class="stripe-item"><span class="stripe-dot"></span>Transportation</span>
-    <span class="stripe-item"><span class="stripe-dot"></span>GIS & Spatial Analysis</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Urban Forestry</span>
     <span class="stripe-item"><span class="stripe-dot"></span>Housing Policy</span>
-    <span class="stripe-item"><span class="stripe-dot"></span>Climate Adaptation</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>International Planning</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Environmental Compliance</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Transportation Planning</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Climate Policy</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>GIS & Spatial Analysis</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Community Equity</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Urban Forestry</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Housing Policy</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>International Planning</span>
+    <span class="stripe-item"><span class="stripe-dot"></span>Environmental Compliance</span>
   </div>
 </div>
 
@@ -858,23 +1050,49 @@
     <h2 class="section-title">Shaping cities<br />for <em>people</em></h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>Noal Leonetti is a graduate student pursuing a <strong>Master of Urban Planning</strong> at the University of Washington's College of Built Environments in Seattle. He is driven by a deep belief that thoughtful, evidence-based planning can create cities that are more livable, resilient, and equitable for everyone.</p>
-        <p>With a commitment to <strong>sustainability and environmental stewardship</strong>, Noal approaches urban challenges by bridging the gap between policy, community needs, and the built environment — always with people at the center.</p>
-        <p>Whether through GIS mapping, community engagement, or policy research, he brings a collaborative, rigorous, and human-centered approach to every project he takes on.</p>
+        <p>Noal Leonetti is a graduate student pursuing a <strong>Master of Urban Planning</strong> at the University of Washington's College of Built Environments in Seattle. A Bowdoin College alumnus ('22) with a BA in Environmental Studies and Government, Noal brings a rare combination of policy fluency, spatial analysis expertise, and international field experience.</p>
+        <p>As a <strong>2022 CBYX Fellow</strong> (Congress-Bundestag Youth Exchange), Noal spent a year in Germany — studying Spatial Planning at Technische Universität Dortmund and completing internships at the cities of <strong>Wuppertal and Duisburg</strong>, where he contributed to urban development and co-created a GeoCache program showcasing climate-friendly city projects.</p>
+        <p>Back in the Pacific Northwest, Noal has worked as a <strong>Transportation and Climate Intern at Puget Sound Regional Council</strong> — supporting the Climate Pollution Reduction Grant program and researching EV adoption strategies — and most recently served as a <strong>Public Policy Intern at MRSC</strong> (2025), advising local governments on permitting, urban forestry, and environmental compliance.</p>
+        <p>He approaches every project with a collaborative, evidence-based mindset, believing that great cities are built on equity, inclusion, and the courage to plan for the long term.</p>
+
+        <!-- Skills -->
+        <div class="skills-row">
+          <span class="skill-tag">ArcGIS Pro</span>
+          <span class="skill-tag">GIS Mapping</span>
+          <span class="skill-tag">Climate Policy</span>
+          <span class="skill-tag">Transportation Planning</span>
+          <span class="skill-tag">Policy Research</span>
+          <span class="skill-tag">Land Use</span>
+          <span class="skill-tag">Environmental Compliance</span>
+          <span class="skill-tag">Urban Forestry</span>
+          <span class="skill-tag highlight">German (Professional)</span>
+          <span class="skill-tag highlight">Spatial Planning</span>
+          <span class="skill-tag">Community Engagement</span>
+          <span class="skill-tag">Housing Analysis</span>
+          <span class="skill-tag">EV Policy</span>
+          <span class="skill-tag">Stormwater Mapping</span>
+        </div>
       </div>
       <div class="about-aside">
         <div class="aside-card">
           <div class="aside-icon">🎯</div>
           <div>
             <div class="aside-card-label">Current focus</div>
-            <div class="aside-card-value">Sustainable urban development</div>
+            <div class="aside-card-value">Climate-resilient urban development</div>
+          </div>
+        </div>
+        <div class="aside-card">
+          <div class="aside-icon">🗺️</div>
+          <div>
+            <div class="aside-card-label">Core tool</div>
+            <div class="aside-card-value">ArcGIS Pro & spatial analysis</div>
           </div>
         </div>
         <div class="aside-card">
           <div class="aside-icon">🌍</div>
           <div>
-            <div class="aside-card-label">Approach</div>
-            <div class="aside-card-value">Equity-centered & data-driven</div>
+            <div class="aside-card-label">International experience</div>
+            <div class="aside-card-value">Germany — Wuppertal & Duisburg</div>
           </div>
         </div>
         <div class="aside-card">
@@ -888,16 +1106,138 @@
           <div class="aside-icon">📚</div>
           <div>
             <div class="aside-card-label">Currently studying</div>
-            <div class="aside-card-value">Urban policy, GIS, housing</div>
+            <div class="aside-card-value">Urban policy, GIS, housing equity</div>
           </div>
+        </div>
+
+        <!-- CBYX spotlight -->
+        <div class="cbyx-card">
+          <span class="cbyx-flag">🇺🇸 🇩🇪</span>
+          <div class="cbyx-label">Competitive Fellowship</div>
+          <div class="cbyx-title">CBYX Fellow 2022</div>
+          <div class="cbyx-body">Awarded the Congress-Bundestag Youth Exchange for Young Professionals — a fully funded US–Germany exchange administered by Cultural Vistas and the U.S. State Department.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ── EXPERIENCE ── -->
+<div class="focus-bg" id="experience">
+  <div class="section-wrap">
+    <div class="section-eyebrow">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">Experience</span>
+    </div>
+    <h2 class="section-title">Where I've <em>worked</em></h2>
+
+    <div class="exp-timeline">
+
+      <!-- MRSC -->
+      <div class="exp-item">
+        <div class="exp-dot">🏛️</div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <div class="exp-role">Public Policy Intern</div>
+            <div class="exp-date">2025</div>
+          </div>
+          <div class="exp-org">Municipal Research and Services Center (MRSC) · Seattle, WA</div>
+          <div class="exp-desc">Assists planning and policy consultants on a range of local government topics, including permitting, urban forestry, and environmental compliance. Conducts policy research, updates MRSC's public-facing topic pages, and contributes to blog posts read by municipalities across Washington State.</div>
+          <div class="exp-tags">
+            <span class="exp-tag">Local Government Policy</span>
+            <span class="exp-tag">Urban Forestry</span>
+            <span class="exp-tag">Environmental Compliance</span>
+            <span class="exp-tag">Policy Writing</span>
+            <span class="exp-tag">Permitting</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PSRC -->
+      <div class="exp-item">
+        <div class="exp-dot">🚊</div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <div class="exp-role">Transportation &amp; Climate Intern</div>
+            <div class="exp-date">2023 – 2024</div>
+          </div>
+          <div class="exp-org">Puget Sound Regional Council (PSRC) · Seattle, WA</div>
+          <div class="exp-desc">Supported regional planning projects under the Climate Pollution Reduction Grant program. Researched strategies for regional electric vehicle adoption and contributed to transportation equity analysis across the four-county Puget Sound region.</div>
+          <div class="exp-tags">
+            <span class="exp-tag">Transportation Planning</span>
+            <span class="exp-tag">EV Policy</span>
+            <span class="exp-tag">Climate Grants</span>
+            <span class="exp-tag">Regional Planning</span>
+            <span class="exp-tag">Equity Analysis</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CBYX / Germany -->
+      <div class="exp-item">
+        <div class="exp-dot">🇩🇪</div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <div class="exp-role">CBYX Fellow — Spatial Planning Intern</div>
+            <div class="exp-date">2022 – 2023</div>
+          </div>
+          <div class="exp-org">Cultural Vistas / Stadt Wuppertal &amp; City of Duisburg · Germany</div>
+          <div class="exp-desc">Awarded the competitive Congress-Bundestag Youth Exchange for Young Professionals fellowship. Completed an intensive German language course, studied Spatial Planning at Technische Universität Dortmund, and interned at Wuppertal's City Building and Development office — co-creating a <strong>GeoCache program</strong> that mapped and highlighted climate-friendly urban projects across the city. Also completed a placement in Duisburg.</div>
+          <div class="exp-tags">
+            <span class="exp-tag">Spatial Planning</span>
+            <span class="exp-tag">GeoCache / GIS</span>
+            <span class="exp-tag">Climate Projects</span>
+            <span class="exp-tag">German</span>
+            <span class="exp-tag">TU Dortmund</span>
+            <span class="exp-tag">International</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- US Forest Service -->
+      <div class="exp-item">
+        <div class="exp-dot">🌲</div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <div class="exp-role">GIS Intern</div>
+            <div class="exp-date">2021</div>
+          </div>
+          <div class="exp-org">U.S. Forest Service · Eastern Region</div>
+          <div class="exp-desc">Collaborated with a team of interns to develop GIS products for the Eastern Region of the United States, highlighting indigenous peoples' history, culture, and current collaborations within National Forests. Work aimed to improve public awareness and institutional recognition of tribal partnerships.</div>
+          <div class="exp-tags">
+            <span class="exp-tag">ArcGIS</span>
+            <span class="exp-tag">Indigenous Land</span>
+            <span class="exp-tag">GIS Products</span>
+            <span class="exp-tag">Tribal Partnerships</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Town of Camden -->
+      <div class="exp-item">
+        <div class="exp-dot">🏘️</div>
+        <div class="exp-body">
+          <div class="exp-header">
+            <div class="exp-role">Planning Intern</div>
+            <div class="exp-date">Summer 2021</div>
+          </div>
+          <div class="exp-org">Town of Camden · Brunswick, Maine</div>
+          <div class="exp-desc">Assisted with municipal planning projects including stormwater mapping and housing density analysis. Applied ArcGIS Pro to produce spatial analysis products informing local land use decisions.</div>
+          <div class="exp-tags">
+            <span class="exp-tag">ArcGIS Pro</span>
+            <span class="exp-tag">Stormwater Mapping</span>
+            <span class="exp-tag">Housing Density</span>
+            <span class="exp-tag">Land Use</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <!-- ── FOCUS AREAS ── -->
-<div class="focus-bg" id="focus">
+<section id="focus">
   <div class="section-wrap">
     <div class="section-eyebrow">
       <div class="eyebrow-line"></div>
@@ -906,38 +1246,38 @@
     <h2 class="section-title">Areas of <em>interest</em></h2>
     <div class="focus-grid">
       <div class="focus-card">
-        <span class="focus-emoji">🏙️</span>
-        <h3>Urban Design & Policy</h3>
-        <p>Studying how zoning, land use, and design guidelines shape livable, resilient cities for all residents.</p>
+        <span class="focus-emoji">🚊</span>
+        <h3>Transportation &amp; Mobility</h3>
+        <p>From regional EV adoption strategies to transit equity, researching how mobility infrastructure shapes who can access opportunity in our cities.</p>
       </div>
       <div class="focus-card">
         <span class="focus-emoji">🌿</span>
-        <h3>Sustainability & Environment</h3>
-        <p>Exploring green infrastructure, climate adaptation strategies, and environmentally conscious development practices.</p>
+        <h3>Climate &amp; Resilience</h3>
+        <p>Applying tools like GIS and grant programming to advance climate pollution reduction and environmentally conscious urban development.</p>
       </div>
       <div class="focus-card">
         <span class="focus-emoji">🤝</span>
-        <h3>Community & Equity</h3>
-        <p>Advocating for inclusive planning processes that center underrepresented voices and address systemic inequities.</p>
-      </div>
-      <div class="focus-card">
-        <span class="focus-emoji">🚌</span>
-        <h3>Transportation & Mobility</h3>
-        <p>Researching transit systems, walkability, and multimodal infrastructure that make cities accessible to everyone.</p>
+        <h3>Community &amp; Equity</h3>
+        <p>Advocating for inclusive planning processes that center underrepresented voices — from indigenous GIS mapping to community engagement frameworks.</p>
       </div>
       <div class="focus-card">
         <span class="focus-emoji">🗺️</span>
-        <h3>Data & GIS Analysis</h3>
-        <p>Using spatial analysis and data visualization to inform evidence-based, impactful planning decisions.</p>
+        <h3>GIS &amp; Spatial Analysis</h3>
+        <p>Using ArcGIS Pro and spatial data to inform evidence-based planning decisions on housing density, stormwater, and land use policy.</p>
       </div>
       <div class="focus-card">
-        <span class="focus-emoji">🏘️</span>
-        <h3>Housing & Affordability</h3>
-        <p>Tackling the Pacific Northwest's most pressing challenges through creative, community-driven policy solutions.</p>
+        <span class="focus-emoji">🏛️</span>
+        <h3>Local Government Policy</h3>
+        <p>Helping municipalities navigate permitting, urban forestry regulations, and environmental compliance through practical, accessible policy guidance.</p>
+      </div>
+      <div class="focus-card">
+        <span class="focus-emoji">🌍</span>
+        <h3>International Planning</h3>
+        <p>Drawing on firsthand experience in German cities — Wuppertal, Duisburg, Dortmund — to bring comparative urban policy perspectives to Pacific Northwest challenges.</p>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ── EDUCATION ── -->
 <section id="education">
@@ -947,6 +1287,7 @@
       <span class="eyebrow-text">Education</span>
     </div>
     <h2 class="section-title">Academic <em>background</em></h2>
+
     <!-- Graduate -->
     <div class="edu-card" style="margin-bottom: 1.25rem;">
       <div class="edu-logo">🎓</div>
@@ -958,13 +1299,24 @@
       <div class="edu-tag">Currently enrolled</div>
     </div>
 
+    <!-- TU Dortmund -->
+    <div class="edu-card" style="margin-bottom: 1.25rem;">
+      <div class="edu-logo" style="background: linear-gradient(135deg, #c0d0e8, #7a99c0);">🏰</div>
+      <div>
+        <div class="edu-degree">Spatial Planning — Exchange Semester</div>
+        <div class="edu-school">Technische Universität Dortmund</div>
+        <div class="edu-detail">Dortmund, Germany · CBYX Fellowship · 2022–2023</div>
+      </div>
+      <div class="edu-tag" style="background: rgba(44,24,16,0.07); border-color: rgba(44,24,16,0.15); color: var(--brown-mid);">CBYX Fellow</div>
+    </div>
+
     <!-- Undergraduate -->
     <div class="edu-card">
       <div class="edu-logo" style="background: linear-gradient(135deg, #c8ddd0, #8fb89e);">🏛️</div>
       <div>
-        <div class="edu-degree">Bachelor of Arts — Environmental Studies & Government</div>
+        <div class="edu-degree">Bachelor of Arts — Environmental Studies &amp; Government</div>
         <div class="edu-school">Bowdoin College</div>
-        <div class="edu-detail">Brunswick, Maine · Minor in German</div>
+        <div class="edu-detail">Brunswick, Maine · Minor in German · Class of 2022 · Crew Team · McKeen Center</div>
       </div>
       <div class="edu-tag" style="background: rgba(107,143,94,0.12); border-color: rgba(107,143,94,0.3); color: #4a6b3e;">BA Completed</div>
     </div>
